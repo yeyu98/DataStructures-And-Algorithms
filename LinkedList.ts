@@ -2,7 +2,7 @@
  * @Author: xiaohu
  * @Date: 2023-07-08 14:20:20
  * @LastEditors: xiaohu
- * @LastEditTime: 2023-07-10 14:33:23
+ * @LastEditTime: 2023-07-10 14:34:31
  * @FilePath: \DataStructures-And-Algorithms\LinkedList.ts
  * @Description: 
  */
@@ -175,7 +175,4 @@ linkList.remove(0)
 linkList.update(0, 999)
 linkList.findAll()
 
-
-// linkList.remove(0)
-// linkList.findAll()
 
