@@ -1,11 +1,13 @@
 /*
  * @Author: xiaohu
  * @Date: 2023-07-08 14:20:20
- * @LastEditors: xiaohu
- * @LastEditTime: 2023-07-10 14:34:31
+ * @LastEditors: lzy-Jerry
+ * @LastEditTime: 2023-07-10 22:03:36
  * @FilePath: \DataStructures-And-Algorithms\LinkedList.ts
  * @Description: 
  */
+
+export {}
 // TODO 后续处理成通用类型
 interface LinkedNode {
   val: number;
