@@ -2,8 +2,8 @@
  * @Author: xiaohu
  * @Date: 2023-07-08 14:20:20
  * @LastEditors: xiaohu
- * @LastEditTime: 2023-07-10 14:12:01
- * @FilePath: \Data-Structure&Algorithm\LinkedList.ts
+ * @LastEditTime: 2023-07-10 14:33:23
+ * @FilePath: \DataStructures-And-Algorithms\LinkedList.ts
  * @Description: 
  */
 interface LinkedNode {
@@ -55,7 +55,7 @@ class LinkedList {
       this.head.next = newNode
     }
     while(currentNode !== null) {
-      if(currentNode.next !== null) {
+      if(!currentNode.next) {
         currentNode.next = newNode
         return
       }
@@ -172,7 +172,10 @@ linkList.insertTail(9)
 linkList.insertHead(4)
 linkList.insert(0, 2)
 linkList.remove(0)
+linkList.update(0, 999)
 linkList.findAll()
+
+
 // linkList.remove(0)
 // linkList.findAll()
 
