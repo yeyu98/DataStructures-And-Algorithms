@@ -6,6 +6,7 @@
  * @FilePath: \DataStructures-And-Algorithms\LinkedList.ts
  * @Description: 
  */
+// TODO 后续处理成通用类型
 interface LinkedNode {
   val: number;
   next: LinkedNode | null;
