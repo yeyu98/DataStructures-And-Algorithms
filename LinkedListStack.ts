@@ -2,9 +2,11 @@
  * @Author: lzy-Jerry
  * @Date: 2023-07-10 21:23:44
  * @LastEditors: lzy-Jerry
- * @LastEditTime: 2023-07-10 22:13:56
+ * @LastEditTime: 2023-07-12 21:56:19
  * @Description: 
  */
+
+export {}
 interface LinkedNode {
     val: number;
     next: LinkedNode | null;
@@ -12,46 +14,31 @@ interface LinkedNode {
   
 class LinkedNode {
     constructor(val?: number, next?: LinkedNode | null) {
-        this.val = val || -999
+        this.val = val === undefined ? -999 : val
         this.next = next || null
     }
 }
 
-// 链表表头不算入元素
-// 这里的head后续需要改一下命名毕竟这里是栈目前还没看到更好的命名
 class LinkedListStack {
-    head: LinkedNode
     stackPeek: LinkedNode | null = null
     stackSize: number = 0
     constructor() {
-        // NOTE 头节点必然存在
-        this.head = new LinkedNode(-999)
-        this.stackPeek = this.head
+        this.stackPeek = null
     }
     /**
      * NOTE 判断栈空
      * @returns boolean
      */
     get isEmpty(): boolean {
-        const peekNode = this.getPeekNode()
-        return this.stackSize === 0 || peekNode === null
-    }
-    /**
-     * NOTE 获取栈顶元素节点
-     * 严格意义上这里所获取的应该是整个栈剩余的所有元素节点
-     * @returns 
-     */
-    private getPeekNode() {
-        return this.head.next
+        return this.stackSize === 0 || this.stackPeek === null
     }
     /**
      * NOTE 获取栈顶元素
      * @returns 
      */
     getPeek() {
-        const peekNode = this.getPeekNode()
-        if(!peekNode) throw new Error("栈被清空啦~") 
-        return peekNode.val
+        if(!this.stackPeek) throw new Error("栈被清空啦~") 
+        return this.stackPeek.val
     }
     /**
      * NOTE 获取栈长度
@@ -66,12 +53,12 @@ class LinkedListStack {
      */
     push(value: number) {
         const newNode = new LinkedNode(value)
-        const peekNode = this.getPeekNode()
-        if(peekNode) {
-            this.head.next = newNode
-            newNode.next = peekNode
+        if(this.stackPeek) {
+            newNode.next = this.stackPeek
+            // NOTE 修正栈顶节点的位置
+            this.stackPeek = newNode
         } else {
-            this.head.next = newNode
+            this.stackPeek = newNode
         } 
         this.stackSize++
     }
@@ -80,12 +67,10 @@ class LinkedListStack {
      * @returns peek
      */
     pop() {
-        // NOTE 获取栈顶元素节点
-        const peekNode = this.getPeekNode()
         // 不为空以及peekNode其实是同一个判断条件
-        if(this.isEmpty || !peekNode) return
-        const peek = this.getPeek()
-        this.head.next = peekNode.next
+        if(this.isEmpty) return
+        const peek = this.stackPeek?.val
+        this.stackPeek = this.stackPeek!.next
         this.stackSize--
         return peek
     }

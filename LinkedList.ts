@@ -2,7 +2,7 @@
  * @Author: xiaohu
  * @Date: 2023-07-08 14:20:20
  * @LastEditors: lzy-Jerry
- * @LastEditTime: 2023-07-10 22:03:36
+ * @LastEditTime: 2023-07-11 23:04:47
  * @FilePath: \DataStructures-And-Algorithms\LinkedList.ts
  * @Description: 
  */
@@ -59,6 +59,7 @@ class LinkedList {
     }
     while(currentNode !== null) {
       if(!currentNode.next) {
+        // NOTE 最后一个节点的下一个节点添加新节点
         currentNode.next = newNode
         return
       }
